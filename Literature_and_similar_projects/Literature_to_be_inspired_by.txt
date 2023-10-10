@@ -10,3 +10,15 @@ https://github.com/CompVis/stable-diffusion
 https://github.com/CompVis/stable-diffusion
     - stable diffusion in simple
     - paper: https://arxiv.org/pdf/2112.10752.pdf
+
+https://scribblediffusion.com/ 
+    - Example of what we are trying to achieve
+
+https://arxiv.org/pdf/2006.01047.pdf 
+    - similar project focussed on faces
+
+https://www.kaggle.com/datasets/ankitsheoran23/sketch-to-image
+    - dataset to look at. Could be interesting for our project
+
+https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8253599
+    - Introduction to GANs. We will probably use diffusion models instead of GANs
