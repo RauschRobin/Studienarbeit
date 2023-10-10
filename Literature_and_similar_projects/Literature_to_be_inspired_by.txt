@@ -1,0 +1,12 @@
+https://github.com/timothybrooks/instruct-pix2pix
+    - editing image to image based on a prompt
+
+https://github.com/CompVis/stable-diffusion
+    - stablediffusion version 1
+
+https://github.com/CompVis/stable-diffusion
+    - a collection of resources/literature to look at when it comes to different kind of ai's
+
+https://github.com/CompVis/stable-diffusion
+    - stable diffusion in simple
+    - paper: https://arxiv.org/pdf/2112.10752.pdf
