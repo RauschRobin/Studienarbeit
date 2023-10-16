@@ -1,0 +1,2 @@
+# Tool for dataset creation
+This folder contains the code for a tool that helps us to create our dataset. This is used to display the real images on a canvas, on which we can then draw over the outlines and save our drawn lines as scribble images to the dataset.
