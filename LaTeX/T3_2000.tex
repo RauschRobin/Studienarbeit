@@ -1,0 +1,172 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=3cm]{geometry}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{blindtext}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{bigdelim}
+\usepackage{colortbl}
+\usepackage{dblfloatfix}
+\usepackage{csquotes}
+\usepackage{fancyhdr} 
+\usepackage{kotex}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{tikzpeople} 
+\usepackage[backend=biber,style=alphabetic,]{biblatex}
+\addbibresource{literatur.bib}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{tikzmark}
+\usepackage{smartdiagram}
+
+\def\UrlBreaks{\do\/\do-}
+
+\fancypagestyle{fancy}{
+	\fancyhf{} 
+	\fancyhead[L]{\includegraphics[scale=0.028]{Bilder/dhbw_logo.png}} 
+	\fancyhead[C]{T3\_2000}
+	\fancyfoot[C]{\thepage}
+}
+
+\fancypagestyle{fancy_transition}{
+	\fancyhf{} 
+	\fancyhead[L]{\includegraphics[scale=0.028]{Bilder/dhbw_logo.png}} 
+	\fancyhead[C]{T3\_2000}
+	\fancyfoot[C]{}
+}
+
+\fancypagestyle{titlepage}{
+	\fancyhead[L]{} 
+	\fancyhead[C]{} 
+	\fancyhead[R]{}
+	\fancyfoot[C]{}
+}
+
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\urlstyle{same}
+\author{\slshape Robin Rausch und Florian Maslowski}
+\title{\includegraphics[height=2.75cm]{Bilder/dhbw_logo.png}\vspace{2cm}\\\textbf{Dein Titel oder so}}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\pagestyle{titlepage}
+\clearpage\maketitle
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+	\begin{tabularx}{\textwidth}{X X}
+		Matrikelnummer & RR: 4718220 und FM: 1234556 \\
+		Kurs & TINF21B \\
+		Ausbildungsfirmen & Dürr Dental SE und Dürr Systems AG \\
+		Ausbildungsorte & Bietigheim-Bissingen \\
+		Betreuer & Kötter \\
+	\end{tabularx}
+\end{center}
+
+\newpage
+\pagestyle{fancy_transition}
+\section*{Abstract}
+\subsection*{Deutsch}
+Diese Arbeit beschäftigt sich mit \textcolor{red}{DER ABSTRACT FEHLT NOCH}
+
+\subsection*{Englisch}
+This thesis deals with \textcolor{red}{ABSTRACT IS MISSING}
+
+\newpage
+\section*{Vorwort}
+Diese Arbeit entstand im Prozess des Absolvierens meines Dualen Studiums und handelt über \dots
+
+\newpage
+\section*{Ehrenwörtliche Erklärung}
+Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Aus den benutzten Quellen, direkt oder indirekt, übernommene Gedanken habe ich als solche kenntlich gemacht. Diese Arbeit wurde bisher in gleicher oder ähnlicher Form oder auszugsweise noch keiner anderen Prüfungsbehörde vorgelegt und auch nicht veröffentlicht.
+\vspace{1cm}
+\newline
+\noindent \raisebox{.2cm}{\rlap{\date{\today}, Bietigheim-Bissingen}}{\line(1,0){210}} \hfill \raisebox{.2cm}{\rlap{\includegraphics[scale=.095]{Bilder/signature.png}}}{\line(1,0){200}}\\
+{\noindent \small Datum, Ort \hfill Unterschrift}
+
+\newpage
+\tableofcontents
+
+\newpage
+\pagenumbering{Roman}
+\pagestyle{fancy}
+\section*{Abkürzungsverzeichnis}
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabularx}{.9\textwidth}{| l | X |}
+		\hline
+		DLL & Dynamic Link Library \\
+		\hline
+		EXE & Executable \\
+		\hline
+	\end{tabularx}
+\end{center}
+
+\newpage
+\listoffigures
+\vspace*{\fill}
+\hrule
+\begin{center}
+	\small
+	\begin{tabularx}{\textwidth}{l X}
+		Deckblatt: & \url{https://upload.wikimedia.org/wikipedia/de/thumb/1/1d/DHBW-Logo.svg/2000px-DHBW-Logo.svg.png?20110626153129} \\
+	\end{tabularx}
+\end{center}
+
+\newpage
+\pagenumbering{arabic}
+\section{Einführung}
+Zum Zeitpunkt des Schreibens dieser Arbeit \parencite[vgl.][]{assembly_in_dotnet}.
+
+\section{Motivation}
+\dots
+
+\section{Grundlagen}
+\subsection{Künstliche Intelligenz}
+\subsection{Maschinelles Lernen}
+\subsection{Deep Learning}
+\subsection{Generative Modelle}
+\subsubsection{GANs}
+\subsubsection{Diffusion}
+\subsection{Historie}
+
+\section{Problemstellung}
+\dots
+
+\section{Evaluation generativer Modelle}
+\dots
+
+\section{Konzipierung}
+
+\section{Implementierung}
+
+\subsection{Datensatz erstellen}
+
+\subsection{Entwickeln eines generativen Modelles}
+
+\subsection{Aufsetzen der Infrastruktur}
+
+\section{Herausforderungen und Hindernisse}
+
+\section{Kritische Reflexion und Ausblick} 
+
+\newpage
+\addcontentsline{toc}{section}{Literatur}
+\small
+\printbibliography	
+\end{document}
