@@ -34,7 +34,6 @@
 \usepackage{smartdiagram}
 \usepackage[printonlyused]{acronym}
 \usepackage[onehalfspacing]{setspace} 
-\newcounter{savepage}  % Zähler für die Hauptseiten
 
 
 \def\UrlBreaks{\do\/\do-}
@@ -60,7 +59,6 @@
 	\fancyfoot[C]{}
 }
 
-\renewcommand{\thefootnote}{\arabic{footnote}}
 
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
@@ -142,8 +140,6 @@ Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Arbeit selbststän
 % \end{center}
 
 \newpage
-\setcounter{savepage}{\arabic{page}}
-\setcounter{footnote}{0}
 \pagenumbering{arabic}
 \setstretch{1.5}
 \acresetall
@@ -208,8 +204,8 @@ Zum Zeitpunkt des Schreibens dieser Arbeit \parencite[vgl.][]{assembly_in_dotnet
 
 \newpage
 
-\phantomsection\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
-\section*{Abkürzungsverzeichnis}
+\phantomsection\addcontentsline{toc}{section}{Anhang}
+\section*{Anhang}
 
 \newpage
 \addcontentsline{toc}{section}{Literatur}
