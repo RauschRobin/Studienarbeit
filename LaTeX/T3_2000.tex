@@ -32,6 +32,9 @@
 \usetikzlibrary{decorations.text}
 \usetikzlibrary{tikzmark}
 \usepackage{smartdiagram}
+\usepackage[printonlyused]{acronym}
+\usepackage[onehalfspacing]{setspace} 
+
 
 \def\UrlBreaks{\do\/\do-}
 
@@ -56,6 +59,7 @@
 	\fancyfoot[C]{}
 }
 
+
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -63,6 +67,8 @@
 \author{\slshape Robin Rausch und Florian Maslowski}
 \title{\includegraphics[height=2.75cm]{Bilder/dhbw_logo.png}\vspace{2cm}\\\textbf{Dein Titel oder so}}
 \pgfplotsset{compat=1.18}
+
+
 \begin{document}
 \pagestyle{titlepage}
 \clearpage\maketitle
@@ -70,15 +76,18 @@
 \vspace*{\fill}
 \begin{center}
 	\begin{tabularx}{\textwidth}{X X}
-		Matrikelnummer & RR: 4718220 und FM: 1234556 \\
+		Matrikelnummer & RR: 4718220 und FM: 2737788 \\
 		Kurs & TINF21B \\
 		Ausbildungsfirmen & Dürr Dental SE und Dürr Systems AG \\
 		Ausbildungsorte & Bietigheim-Bissingen \\
-		Betreuer & Kötter \\
+		Betreuer & Prof. Dr.-Ing. Dipl. Inf. Kötter \\
 	\end{tabularx}
 \end{center}
 
 \newpage
+\pagenumbering{Roman}
+\setstretch{1.5}
+
 \pagestyle{fancy_transition}
 \section*{Abstract}
 \subsection*{Deutsch}
@@ -103,35 +112,63 @@ Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Arbeit selbststän
 \tableofcontents
 
 \newpage
-\pagenumbering{Roman}
 \pagestyle{fancy}
+\phantomsection\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
 \section*{Abkürzungsverzeichnis}
-\begin{center}
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabularx}{.9\textwidth}{| l | X |}
-		\hline
-		DLL & Dynamic Link Library \\
-		\hline
-		EXE & Executable \\
-		\hline
-	\end{tabularx}
-\end{center}
+\begin{acronym}
+	\acro{udp}[UDP]{User Datagram Protocol}
+	\acro{tcp}[TCP]{Transfer Control Protocol}
+	\acro{ip}[IP]{Internet Protocol}
+	\acro{osi}[OSI]{Open Systems Interconnection}
+	\acro{sip}[SIP]{Session Initiation Protocol}
+	\acro{api}[API]{Application Programming Interface}
+	\acro{ai}[AI]{Artificial Intelligence}
+	\acro{srtp}[SRTP]{Secure Real Time Transport Protocol}
+	\acro{itut}[ITU-T]{International Telecommunication Union Telecommunication}
+\end{acronym}
 
 \newpage
 \listoffigures
 \vspace*{\fill}
-\hrule
-\begin{center}
-	\small
-	\begin{tabularx}{\textwidth}{l X}
-		Deckblatt: & \url{https://upload.wikimedia.org/wikipedia/de/thumb/1/1d/DHBW-Logo.svg/2000px-DHBW-Logo.svg.png?20110626153129} \\
-	\end{tabularx}
-\end{center}
+%Was soll das?
+% \hrule
+% \begin{center}
+% 	\small
+% 	\begin{tabularx}{\textwidth}{l X}
+% 		Deckblatt: & \url{https://upload.wikimedia.org/wikipedia/de/thumb/1/1d/DHBW-Logo.svg/2000px-DHBW-Logo.svg.png?20110626153129} \\
+% 	\end{tabularx}
+% \end{center}
 
 \newpage
 \pagenumbering{arabic}
+\setstretch{1.5}
+\acresetall
+
+% Vorlagen:
+%
+% Beschreibungsbeispiel mit richtigem Abstand
+% \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries UDP:}]
+% 	\item[UDP:] Verbindungsloses Daten-streaming-Protokoll
+% 	\item[TCP:] Verbindungsorientiertes Datentransferprotokoll  
+% \end{description}
+%
+% Figur Beispiel
+% \begin{figure}[H]
+% 	\begin{center}
+% 		\includegraphics[]{Bilder/...}
+% 		\caption{Bildtitel}
+% 		\label{img:beispiel}
+% 	\end{center}
+% \end{figure}
+%
+% Direktes Zitat: \cite[S.]{MITRE:Paper}. \\
+% Indirektes Zitat: \cite[vgl.][S.322]{Book:ZeroDay}. \\
+% Andere Quellenarten (siehe Quellen.bib Datei): \\
+% Techreport: \cite{IEC:62443-4-2} \\
+% Online: \cite{ESET:Industroyer}
+
 \section{Einführung}
-Zum Zeitpunkt des Schreibens dieser Arbeit \parencite[vgl.][]{assembly_in_dotnet}.
+Zum Zeitpunkt des Schreibens dieser Arbeit \parencite[vgl.][]{assembly_in_dotnet}.\cite[vgl.][]{csharp_5.0_in_a_nutshell_page_3_to_5}
 
 \section{Motivation}
 \dots
@@ -164,6 +201,7 @@ Zum Zeitpunkt des Schreibens dieser Arbeit \parencite[vgl.][]{assembly_in_dotnet
 \section{Herausforderungen und Hindernisse}
 
 \section{Kritische Reflexion und Ausblick} 
+
 
 \newpage
 \addcontentsline{toc}{section}{Literatur}
