@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Drawing</title>
+    <style>
+        #drawingCanvas {
+            z-index: -1;
+            position: absolute;
+        }
+
+        #drawingCanvasDrawing {
+            z-index: 1; 
+        } 
+    </style>
+</head>
+<body>
+    <input type="file" id="imageInput" accept="image/*">
+    <canvas id="drawingCanvas"></canvas>
+    <canvas id="drawingCanvasDrawing"></canvas>
+    <button id="saveDrawing">Save Drawing</button>
+    <button id="clearDrawing">Clear Drawing</button>
+</body>
+<script>
+    const imageInput = document.getElementById('imageInput');
+    const drawingCanvas = document.getElementById('drawingCanvas');
+    const ctx = drawingCanvas.getContext('2d');
+    const saveDrawingButton = document.getElementById('saveDrawing');
+
+    const drawingCanvasCopy = document.getElementById('drawingCanvasDrawing');
+    const drawingCtx = drawingCanvasCopy.getContext('2d');
+    const clearDrawingButton = document.getElementById('clearDrawing');
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    imageInput.addEventListener('change', function () {
+        const file = imageInput.files[0];
+        const image = new Image();
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            image.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+
+        image.onload = function () {
+            drawingCanvas.width = image.width;
+            drawingCanvas.height = image.height;
+            drawingCanvasCopy.width = image.width;
+            drawingCanvasCopy.height = image.height;
+            ctx.drawImage(image, 0, 0);
+        };
+    });
+
+    drawingCanvasCopy.addEventListener('mousemove', draw);
+
+    function draw(e) {
+        if (isDrawing) {
+            drawingCtx.lineJoin = 'round';
+            drawingCtx.lineCap = 'round';
+            drawingCtx.lineWidth = 2;
+
+            drawingCtx.beginPath();
+            drawingCtx.moveTo(lastX, lastY);
+            drawingCtx.lineTo(e.offsetX, e.offsetY);
+            drawingCtx.stroke();
+
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+    }
+
+    drawingCanvasCopy.addEventListener('mousedown', (e) => {
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+        isDrawing = true;
+    });
+    drawingCanvasCopy.addEventListener('mouseup', (e) => {
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+        isDrawing = false;
+    });
+
+    saveDrawingButton.addEventListener('click', function () {
+        const drawingImage = drawingCanvasCopy.toDataURL('image/png');
+        const downloadLink = document.createElement('a');
+        downloadLink.href = drawingImage;
+        downloadLink.download = 'drawing.png';
+        downloadLink.click();
+    });
+
+    clearDrawingButton.addEventListener('click', function () {
+        drawingCtx.clearRect(0, 0, drawingCanvasCopy.width, drawingCanvasCopy.height);
+    });
+
+</script>
+</html>
