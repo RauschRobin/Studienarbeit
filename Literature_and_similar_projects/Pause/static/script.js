@@ -96,6 +96,32 @@ function pencil() {
         hold = false;
     };
 
+    // Touch drawing --------------------------------------------------------
+    canvas.addEventListener('touchstart', (e) => {
+        // console.log("Test1");
+        curX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+        curY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+        hold = true;
+    
+        prevX = curX;
+        prevY = curY;
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+    })
+    canvas.addEventListener('touchmove', (e) => {
+        // console.log("Test2");
+        if (hold) {
+            curX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+            curY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+            draw();
+        }
+    })
+    canvas.addEventListener('touchend', (e) => {
+        // console.log("Test3");
+        hold = false;
+    })
+    // --------------------------------------------------------------------
+
     function draw() {
         ctx.lineTo(curX, curY);
         ctx.stroke();

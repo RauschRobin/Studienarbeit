@@ -7,6 +7,7 @@ import base64
 import zipfile
 
 app = Flask(__name__)
+
 # Database ------------------------------
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///images.db'
 db = SQLAlchemy(app)
@@ -69,13 +70,13 @@ def save():
         
         elif('image_id' in request.form):
             image_id = request.form['image_id']
-            rowToUpdate = Image.query.get(image_id)
+            row_to_update = Image.query.get(image_id)
 
             image2 = request.form['drawimg']
             image2_data = base64.b64decode(image2.split(',')[1])
             if image_id and image2:
                 # Create a new Image object with the image data
-                rowToUpdate.drawing_image_data = image2_data
+                row_to_update.drawing_image_data = image2_data
                 db.session.commit()
 
                 return jsonify({'message': 'Image uploaded successfully'})
@@ -122,7 +123,6 @@ def view_image(image_id):
     image = Image.query.get(image_id)
 
     if image:
-        # return send_file(BytesIO(image.drawing_image_data), mimetype='image/png')  # Adjust the mimetype as needed
         real_image = PILImage.open(BytesIO(image.real_image_data))
         draw_image = PILImage.open(BytesIO(image.drawing_image_data))
 
@@ -152,7 +152,6 @@ def delete_image(image_id):
         db.session.delete(image)
         db.session.commit()
 
-        images = Image.query.all()
         return redirect('/images')
     else:
         return redirect('/images')
