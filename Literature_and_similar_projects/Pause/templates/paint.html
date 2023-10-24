@@ -26,28 +26,21 @@
                 </td>
                 <td>
                     <canvas id="paint" width="750" height="450" style="border: 5px solid #000000;"></canvas>
-                    <div id="drawingCanvas"></div>
+                    <div id="drawingCanvas" style="background-image: url('{{ image }}');"></div>
                 </td>
                 </tr>
             </table></p>
             <fieldset id="colorset">
-            <!-- <table>
-                <tr>
-                    
-                </tr>
-                <tr>
-                    
-                </tr>
-                <tr>
-                    <td><label>Line Width</label></td>
-                    <td><button id="pixel_plus" type="button" onclick="add_pixel()" style="width: 25px;">+</button></td>
-                    <td><button id="pixel_minus" type="button" onclick="reduce_pixel()" style="width: 25px;">-</button></td>
-                </tr>
-            </table> -->
 
                 <input type="file" id="imageInput" accept="image/*">
                 <br><br>
+                {% if image_id %}
+                <button id="save" onclick="updatedb('{{ image_id }}')">Upload to Database</button>
+                <p>image id is set {{ image_id }}</p>
+                {% else %}
                 <button id="save" onclick="save()">Upload to Database</button>
+                {% endif %}
+
                 <button id="download" onclick="download()">Download</button>
                             
                 </fieldset>

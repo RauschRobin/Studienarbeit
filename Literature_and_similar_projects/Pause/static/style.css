@@ -50,8 +50,9 @@
     width: 750px;
     height: 450px;
     border: 5px solid #000000;
-    background-repeat: none;
+    background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
 }
 
 #paint {

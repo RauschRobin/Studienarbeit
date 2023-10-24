@@ -253,3 +253,51 @@ async function save(){
     
     //----------------------------------------------
 } 
+async function updatedb(image_id){
+
+    let ctext = "Are you sure?";
+    if (confirm(ctext) != true) {
+        return ;
+    } 
+    
+    const drawingImage = canvas.toDataURL('image/png');
+
+    //-----------------------------------------
+    var c = document.createElement('canvas');
+    var element = drawingCanvas;
+    var img = new Image();
+    
+    // Get the background image URL from the element's style
+    var backgroundImage = getComputedStyle(element).getPropertyValue('background-image');
+    var imageURL = backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+
+    img.src = imageURL;
+
+    c.width = img.width;
+    c.height = img.height;
+    var ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+
+    try {
+        const formData = new FormData();
+        formData.append('drawimg', drawingImage);
+        formData.append('image_id', image_id);
+    
+        const response = await fetch('/save', {
+          method: 'POST',
+          body: formData,
+        });
+    
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Image uploaded:', data);
+          location.reload();
+        } else {
+          console.error('Image upload failed:', response.status, response.statusText);
+        }
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
+    
+    //----------------------------------------------
+} 

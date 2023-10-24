@@ -1,0 +1,19 @@
+{% include "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload images</title>
+</head>
+<body>
+    <h1>Upload more images</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="imageUpload">Select Multiple Images:</label>
+        <input type="file" id="imageUpload" name="images" accept="image/*" multiple>
+        <br>
+        <br>
+        <input type="submit" value="Upload Images">
+    </form>
+</body>
+</html>
+{% endblock %}
