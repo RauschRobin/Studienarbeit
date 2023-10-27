@@ -15,15 +15,16 @@
                     <button class="tool" id="eraser-tool">Eraser</button>
                 </div>
                 <div class="drawing-area">
-                    <img src="/static/background.png" width="600" height="400" style="padding: 0; margin: 0;"/>
+                    <img src="data:image/png;base64,{{ background_image }}" alt="--empty--" width="600" height="400" style="padding: 0; margin: 0;"/>
                     <canvas id="canvas" width="600" height="400"></canvas>
                 </div>
             </div>
             <div class="button-container">
-                <button id="clear-button">Clear</button>
+                <button id="clear-button" class="edit-button">clear</button>
+                <a href="/manageDatabase"><button class="edit-button">edit database</button></a>
                 <form id="image-form" method="post" action="/process_image">
                     <input type="hidden" id="image-data" name="image_data">
-                    <button type="submit" id="save-button">Transform</button>
+                    <button type="submit" id="save-button">transform</button>
                 </form>
             </div>
         </div>
