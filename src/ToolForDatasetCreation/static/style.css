@@ -7,6 +7,19 @@ body {
     padding: 0;
 }
 
+/* Navigation bar styles */
+.navbar {
+    background-color: #121212;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar a {
+    margin-right: 20px;
+}
+
 .content {
     display: flex;
     flex-direction: column;

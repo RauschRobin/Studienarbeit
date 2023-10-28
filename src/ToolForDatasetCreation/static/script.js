@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const ctx = canvas.getContext("2d");
     let drawing = false;
 
+    const undoButton = document.getElementById("undo-button");
+    let drawingStack = [canvas.toDataURL()]; // Add an initial empty canvas
+    let redoStack = [];
+
     const penTool = document.getElementById("pen-tool");
     const eraserTool = document.getElementById("eraser-tool");
 
@@ -37,9 +41,39 @@ document.addEventListener("DOMContentLoaded", function () {
         if (drawing && (e.pointerType === 'pen' || e.pointerType === 'touch')) {
             drawing = false;
             ctx.closePath();
+    
+            // Save the drawing action to the stack
+            const imageData = canvas.toDataURL();
+            drawingStack.push(imageData);
+    
+            // Clear the redo stack when a new drawing action occurs
+            redoStack.length = 0;
         }
     }
 
+    undoButton.addEventListener("click", function () {
+        console.log(drawingStack.length)
+
+        if (drawingStack.length > 1) {
+            // Pop the current drawing from the stack
+            drawingStack.pop();
+
+            // Get the previous drawing
+            const previousDrawing = drawingStack[drawingStack.length - 1];
+            
+            // Push the current drawing to the redo stack
+            redoStack.push(canvas.toDataURL());
+
+            // Redraw the previous drawing
+            const img = new Image();
+            img.src = previousDrawing;
+            img.onload = function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0);
+            }
+        }
+    });
+    
     clearButton.addEventListener("click", function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
@@ -115,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     canvas.addEventListener("mouseup", function () {
         drawing = false;
+        drawingStack.push(canvas.toDataURL());
     });
 
     document.getElementById("save-button").addEventListener("click", function () {

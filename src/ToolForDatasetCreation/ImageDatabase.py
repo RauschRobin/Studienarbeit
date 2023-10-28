@@ -6,7 +6,7 @@ class ImageDatabase:
         self.db_path = db_path
         self.conn = sqlite3.connect(db_path, check_same_thread=False)
         self.cursor = self.conn.cursor()
-        self.cursor.execute("CREATE TABLE IF NOT EXISTS images (id INTEGER PRIMARY KEY, original_image BLOB, drawn_image BLOB)")
+        self.cursor.execute("CREATE TABLE IF NOT EXISTS images (id INTEGER PRIMARY KEY, original_image BLOB NOT NULL, drawn_image BLOB)")
 
     def add_drawn_image(self, image_id, drawn_image):
         self.cursor.execute("UPDATE images SET drawn_image=? WHERE id=?", (sqlite3.Binary(drawn_image), image_id))
