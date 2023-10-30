@@ -6,6 +6,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="navbar">
+        <a href="/"><button class="edit-button">home</button></a>
+        <a href="/manageDatabase"><button class="edit-button">database</button></a>
+    </div>
     <div class="content">
         <div class="center">
             <div class="container">
@@ -13,17 +17,18 @@
                     <h1>Draw Tools</h1>
                     <button class="tool active" id="pen-tool">Pen</button>
                     <button class="tool" id="eraser-tool">Eraser</button>
+                    <button class="tool" id="undo-button">Undo</button>
                 </div>
                 <div class="drawing-area">
-                    <img src="/static/background.png" width="600" height="400" style="padding: 0; margin: 0;"/>
+                    <img src="data:image/png;base64,{{ background_image }}" alt="--empty--" width="600" height="400" style="padding: 0; margin: 0;"/>
                     <canvas id="canvas" width="600" height="400"></canvas>
                 </div>
             </div>
             <div class="button-container">
-                <button id="clear-button">Clear</button>
+                <button id="clear-button" class="edit-button">clear</button>
                 <form id="image-form" method="post" action="/process_image">
                     <input type="hidden" id="image-data" name="image_data">
-                    <button type="submit" id="save-button">Transform</button>
+                    <button type="submit" id="save-button">upload to database</button>
                 </form>
             </div>
         </div>
