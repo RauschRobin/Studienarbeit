@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=3cm]{geometry}
 \usepackage{multicol}
+\usepackage{multirow}
+\usepackage{hhline}
 \usepackage{booktabs}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tikz}
@@ -18,14 +20,15 @@
 \usepackage{bigdelim}
 \usepackage{colortbl}
 \usepackage{dblfloatfix}
-\usepackage{csquotes}
+% \usepackage{csquotes}
 \usepackage{fancyhdr} 
 \usepackage{kotex}
 \usepackage{tabularx}
 \usepackage{xcolor}
 \usepackage{color}
 \usepackage{tikzpeople} 
-\usepackage[backend=biber,style=alphabetic,]{biblatex}
+% \usepackage[backend=biber,style=alphabetic,]{biblatex} % TODO: Zeile Abklären und Löschen
+\usepackage[backend=biber,style=numeric,]{biblatex}
 \addbibresource{literatur.bib}
 \setcounter{biburllcpenalty}{7000}
 \setcounter{biburlucpenalty}{8000}
@@ -34,7 +37,10 @@
 \usepackage{smartdiagram}
 \usepackage[printonlyused]{acronym}
 \usepackage[onehalfspacing]{setspace} 
-
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{enumitem}
+\usepackage{calc}
 
 \def\UrlBreaks{\do\/\do-}
 
@@ -65,7 +71,7 @@
 
 \urlstyle{same}
 \author{\slshape Robin Rausch und Florian Maslowski}
-\title{\includegraphics[height=2.75cm]{Bilder/dhbw_logo.png}\vspace{2cm}\\\textbf{Dein Titel oder so}}
+\title{\includegraphics[height=2.75cm]{Bilder/dhbw_logo.png}\vspace{2cm}\\\textbf{Planung und Entwicklung eines KI-Modelles zum Transformieren von handschriftlichen Zeichnungen in fotorealistische Bilder}}
 \pgfplotsset{compat=1.18}
 
 
@@ -91,22 +97,43 @@
 \pagestyle{fancy_transition}
 \section*{Abstract}
 \subsection*{Deutsch}
-Diese Arbeit beschäftigt sich mit \textcolor{red}{DER ABSTRACT FEHLT NOCH}
+	Die Forschung im Bereich der künstlichen Intelligenz umfasst viele verschiedene Bereiche der Informationstechnik und Mathematik. 
+	Aufgrund der aktuellen Entwicklungen und stetig fortschreitenden Forschung, ergeben sich immer mehr Möglichkeiten, diese Technologie anderswo einzusetzen.
+	Die Arbeit beschäftigt sich mit der Planung und Entwicklung eines Modelles basierend auf künstlicher Intelligenz, welches in der Kategorie Bild-zu-Bild einzuordnen ist. 
+	Ziel der Arbeit ist ein funktionsfähiges Modell, das handangefertigte Zeichnungen und Skizzen in fotorealistische Bilder umwandeln kann. 
+	Die Architektur dieses Modelles soll aus bereits bestehenden Technologien konstruiert werden (Beispielsweise "Generative Adversarial Networks"). 
+	Das Modell soll zur Kreativität und Inspiration bei Designprozessen verwendet werden können. 
+	Ergebnis dieser Arbeit soll eine Applikation oder Website mit benutzerfreundlicher Oberfläche sein, welche das Erzeugen fotorealistischer Bilder anhand Skizzen ermöglicht. 
+	Benutzer*innen können dann über eine auf der Oberfläche angezeigte Zeichenfläche Skizzen erstellen. 
+	Diese werden dann in das zu erstellende Modell gegeben und das Ergebnis des Modelles wird anschließend dem/der Benutzer*in angezeigt und zum Herunterladen angeboten. 
+	Trainiert wird das Modell über ein zu erstellendes Datenset, welches aus bestehenden Daten aus dem Internet und selbst erzeugten Daten zusammengesetzt wurde. 
+
+	Begonnen wird mit der Erstellung eines Datensatzes. 
+	Hierzu werden Bilder aufgenommen und folglich als handgemalte Skizzen erstellt. 
+	Zusätzlich werden Open-Source-Datensets aus dem Web verglichen und teilweise oder ganz übernommen. 
+	Die Bilder werden dann in einem Datensatz zusammengefasst und später für das Trainieren des Modelles verwendet. 
+	Nebenher erfolgt eine ausführliche Recherche zur Thematik und speziell der verschiedenen Möglichkeiten der Architektur des Modelles. 
+	Darauf aufbauend soll die Struktur und allgemeine Planung des Modelles erfolgen. 
+	Nach Abschluss der Planung und Vorbereitung wird mit der Entwicklung des Modelles begonnen. 
+	Diese wird vorraussichtlich in der Programmiersprache Python umgesetzt werden. 
+	Zuletzt erfolgt die Implementierung des Modelles in eine Applikation. 
+	Zusätzlich wird eine Oberfläche erstellt, auf welcher Benutzer*innen Skizzen erstellen können und an das Modell gegeben werden. 
+	Das resultierende Bild soll dann wieder ausgegeben werden.
 
 \subsection*{Englisch}
-This thesis deals with \textcolor{red}{ABSTRACT IS MISSING}
+	This thesis deals with \textcolor{red}{ABSTRACT IS MISSING}
 
 \newpage
 \section*{Vorwort}
-Diese Arbeit entstand im Prozess des Absolvierens meines Dualen Studiums und handelt über \dots
+	Diese Arbeit entstand im Prozess des Absolvierens meines Dualen Studiums und handelt über \dots
 
 \newpage
 \section*{Ehrenwörtliche Erklärung}
-Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Aus den benutzten Quellen, direkt oder indirekt, übernommene Gedanken habe ich als solche kenntlich gemacht. Diese Arbeit wurde bisher in gleicher oder ähnlicher Form oder auszugsweise noch keiner anderen Prüfungsbehörde vorgelegt und auch nicht veröffentlicht.
-\vspace{1cm}
-\newline
-\noindent \raisebox{.2cm}{\rlap{\date{\today}, Bietigheim-Bissingen}}{\line(1,0){210}} \hfill \raisebox{.2cm}{\rlap{\includegraphics[scale=.095]{Bilder/signature.png}}}{\line(1,0){200}}\\
-{\noindent \small Datum, Ort \hfill Unterschrift}
+	Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Aus den benutzten Quellen, direkt oder indirekt, übernommene Gedanken habe ich als solche kenntlich gemacht. Diese Arbeit wurde bisher in gleicher oder ähnlicher Form oder auszugsweise noch keiner anderen Prüfungsbehörde vorgelegt und auch nicht veröffentlicht.
+	\vspace{1cm}
+	\newline
+	\noindent \raisebox{.2cm}{\rlap{\date{\today}, Bietigheim-Bissingen}}{\line(1,0){210}} \hfill \raisebox{.2cm}{\rlap{\includegraphics[scale=.095]{Bilder/signature.png}}}{\line(1,0){200}}\\
+	{\noindent \small Datum, Ort \hfill Unterschrift}
 
 \newpage
 \tableofcontents
@@ -125,6 +152,12 @@ Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Arbeit selbststän
 	\acro{ai}[AI]{Artificial Intelligence}
 	\acro{srtp}[SRTP]{Secure Real Time Transport Protocol}
 	\acro{itut}[ITU-T]{International Telecommunication Union Telecommunication}
+	\acro{vgl}[vgl.]{vergleiche}
+	\acro{ki}[KI]{Künstliche Intelligenz}
+	\acro{gan}[GAN]{Generative Adversarial Networks}
+	\acro{ki}[KI]{Künstliche Intelligenz}
+	\acro{gpu}[GPU]{Graphics Processing Unit}
+	\acro{cnn}[CNN]{Convolutional Neural Networks}
 \end{acronym}
 
 \newpage
@@ -168,25 +201,153 @@ Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Arbeit selbststän
 % Online: \cite{ESET:Industroyer}
 
 \section{Einführung}
-Zum Zeitpunkt des Schreibens dieser Arbeit \parencite[vgl.][]{assembly_in_dotnet}.\cite[vgl.][]{csharp_5.0_in_a_nutshell_page_3_to_5}
-
+	% Zum Zeitpunkt des Schreibens dieser Arbeit \parencite[vgl.][]{assembly_in_dotnet}.\cite[vgl.][]{csharp_5.0_in_a_nutshell_page_3_to_5}
+	In der heutigen Ära der künstlichen Intelligenz hat sich die Computerbildgebung zu einem dynamischen und faszinierenden Forschungsgebiet entwickelt. 
+	Die Entwicklung von Algorithmen und Modellen zur Generierung von realistischen Bildinhalten aus unterschiedlichen Quellen ist zu einer bemerkenswerten Herausforderung geworden. 
+	Dies ist insbesondere im Kontext von Handzeichnungen und Skizzen von großer Bedeutung.
+	''MAGIC'' steht für "Marvelous AI for Generating Image Content" und repräsentiert einen wichtigen Fortschritt in diesem Bereich.\\
+	%
+	Die Fähigkeit, aus handgezeichneten Skizzen fotorealistische Bilder zu erzeugen, ist nicht nur von technischem Interesse, sondern hat auch eine breite Palette von Anwendungen in Kunst, Design, Animation und sogar im Bereich der Medizin. 
+	Diese Studienarbeit widmet sich der Untersuchung und Analyse von MAGIC und seiner Rolle bei der Umwandlung von Skizzen in eindrucksvolle und realistische Bildinhalte.\\
+	%
+	Im Verlauf dieser Arbeit werden wir einen detaillierten Blick auf die Funktionsweise von MAGIC werfen, die zugrundeliegenden Technologien und Algorithmen erforschen und verschiedene Anwendungsfälle beleuchten. 
+	Darüber hinaus werden wir die Herausforderungen und Möglichkeiten in diesem Bereich erörtern, um ein umfassendes Verständnis für diese spannende Forschungsrichtung zu vermitteln.
+	
+\newpage
 \section{Motivation}
 \dots
 
+\newpage
 \section{Grundlagen}
 \subsection{Künstliche Intelligenz}
+	Es ist schwer \ac{ki} genau zu definieren.
+	Eine der verbreitetsten Definitionen geht aus der Arbeit ''Computing machinery and intelligence'' von Alan Turing hervor.
+	Alan Turing war ein britischer Logiker, Mathematiker sowie Informatiker und Kryptoanalytiker. 
+	In dieser Arbeit führte er den bekannten Turing Test durch, in welchem eine Maschine als intelligent eingestuft wird, wenn sie in einer Konversation nicht von einem Menschen unterschieden werden kann.
+	\cite[\ac{vgl}][]{10.1111/bjd.18880}.
+	% TODO: Turing test erklären
+
 \subsection{Maschinelles Lernen}
+	Maschinelles Lernen bezieht sich auf Algorithmen und statistische Modelle, welche anhand eines Traingsdatensatzes bestimmte Muster erkennen oder Schlüsse ziehen.
+	Um ein solches Modell zu trainieren, wird ein Teil des Traingsdatensatzes nicht zum Training sondern zum Testen verwendet wird.
+	 \cite[\ac{vgl}][S.424]{10.1111/bjd.18880}.\\
+	%
+	% TODO: Dimenstionsreduktion und Clusterbildung erklären
+	Bei maschinellem Lernen wird zwischen verschiedenen Verfahren differenziert:
+	%
+	\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Unüberwachtes Lernen:}]
+		\item[Überwachtes Lernen:] Beim überwachten Lernen werden Algorithmen mit ausgewählten Trainingsdaten versorgt, die aus Eingabedaten und den zugehörigen Ausgabedaten bestehen. 
+		Das Modell lernt, eine Assoziierung von Eingabe zu Ausgabe herzustellen. 
+		Dies wird häufig für Aufgaben wie Klassifikation und Regression verwendet.
+		\item[Unüberwachtes Lernen:]  Im unüberwachten Lernen werden Algorithmen mit Daten ohne vorherige Zuordnung oder Kennzeichnung trainiert. 
+		Ziel ist es, verborgene Strukturen oder Muster in den Daten zu erkennen.
+		Dazu werden beispielsweise Clusterbildungen oder Dimensionsreduktionen verwendet. 
+		\item[Verstärktes Lernen:] Beim verstärkenden Lernen lernt ein Modell durch Interaktion mit seiner Umgebung. 
+		Es erhält Feedback in Form von Belohnungen oder Bestrafungen und passt seine Aktionen an, um die Gesamtbelohnung zu maximieren. 
+		Dieses Paradigma wird in Bereichen wie Robotik und Spieltheorie eingesetzt.
+	\end{description}
+	%
+	Für das entwickeln eines intelligenten Modells ist Training sowie Testen essenziell.
+	W3schools empfiehlt dafür den Datensatz in Trainings- und Testdaten aufzuteilen.
+	Das Verhältnis wird mit 80\% für Trainingsdaten und 20\% für Testdaten angegeben \cite[\ac{vgl}][]{site:w3schoolstraintest}.
+	%
+
+	\subsubsection*{Anwendungen:}
+		Das maschinelle Lernen findet in breitgefächerten Gebieten Anwendung.
+		Aktuell wird es dazu verwendet, um in der Medizin neue Arzneimittel, Impfstoffe, etc. zu erschaffen.
+		Außerdem wird es in Laboren für die Diagnose von Krankheiten und Viren verwendet.
+		In der Wirtschaft wird maschinelles Lernen für die Risikobewertung, Aktienhandel, etc. verwendet.
+		Ein Anwendungsgebiet, welches für diese Arbeit hohe Relevanz ist, ist die Bildverarbeitung.
+		Dort wir maschinelles Lernen für Objekterkennung, Bildtransformationen, etc. verwendet.  
+
 \subsection{Deep Learning}
+	Als Teilgebiet des maschinellen Lernens, wird bei dieser Art des Lernens auf den Nachbau eines menschlichen Gehirns gesetzt.
+	Im menschlichen Gehirn befinden sich Neuronen/Gehirnzellen, welche miteinander verbunden sind. 
+	Beim Anlernen neuen Wissens bilden sich neue Neuronenbindungen.
+	Diese Verbindungen werden durch öftere Verwendungen gestärkt.
+	Auf der anderen Seite werden selten genutzte Verbindungen schwächer, bis sie nicht mehr existent sind.
+	Deep Learning Modelle versuchen dieses Prinzip nachzubauen.
+	Dabei werden Neuronen durch Knotenpunkte repräsentiert, welche in mehreren Schichten/Layer angeordnet sind.
+	Während dem Training werden die Gewichtungen der verschiedenen Verbindungen/Kanten mit dem Backpropagation-Prozess optimiert.
+	Neuronale Netzwerke, welche über mehrere ''Hidden Layers'' verfügen, werden als ''deep'' neuronale Netze bezeichnet.
+	 \cite[\ac{vgl}][S.424]{10.1111/bjd.18880}
+	%
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.9\textwidth, page=1]{Dateien/NeuralNetwork/NeuralNetwork.pdf}
+			\caption{Deep Learning Modell \cite[][]{site:neuralnetwork}}
+			\label{img:deeplearning}
+		\end{center}
+	\end{figure}
+	% TODO: Backpropagation
+	Das Konzept des Deep Learnings war schon im Jahr 1943 bekannt.
+	Ausschlaggebend dafür war der von Warren McCullough und Walter Pitts geschrieben Artikel ''A Logical Calculus of Ideas Immanent in Nervous Activity''.
+	In diesem Artikel wurde erstmals das mathematische Modell eines neuronalen Netzwerks ausgearbeitet.
+	1950 wurde ''Snarc'', der erste Computer mit neuronalem Netzwerk, von den Harvard-Studenten Marvin Minsky und Dean Edmonds erschaffen.
+	Im selben Jahr hat auch Turing seine Arbeit ''Computing machinery and intelligence'', welche den Turing-Test beinhaltet, veröffentlicht \cite[\ac{vgl}][]{site:datascientestki}.
+	%
+	Jedoch war damals die Rechenleistung nicht ausreichend effizient und bezahlbar, um im Alltag Fuß zu fassen.
+	Im Jahr 2013 wurde erkannt, dass Grafikkarten/\ac{gpu}, welche eigentlich für die Berechnung 3-Dimensionaler Grafiken in Computerspielen konzipiert waren, große Anwendung im repetitiven Training von neuronalen Netzwerken finden können.
+	%
+	\subsubsection*{\ac{cnn}} % TODO: CNN ausführen
+	\ac{cnn} sind spezielle neuronale Netze, dessen Architektur besonders in der Bildverarbeitung als effektiv gilt.
+	In den letzten Jahren stieg die Anzahl an Anwendungen aufgrund der demonstrierbaren Effizienz und Verfügbarkeit. 
+	Unternehmen wie Google und Facebook investierten in die Entwicklung und Forschung dieser Netze.
+	Daraus resultierten Architekturen, wie zum Beispiel Inception von Google und ResNet von Microsoft.
+	Diese Architekturen können über Frameworks, wie TensorFlow und PyTorch für eigene Zwecke verwendet und weiterentwickelt werden.
+	Ein häufiger Ansatz ist es vortrainierte Architekturen zu modifizieren, um individuelle Anwendungen zu meistern.\\
+	%
+	2017 wurde ein Meilenstein in der Medizin erreicht.
+	Die Zuverlässigkeit eines \ac{cnn} konnte erstmals mit der eines Dermatologen verglichen werden.
+	Für dieses Netzwerk wurde ein vortrainiertes Modell von Google für die medizinische Anwendung optimiert und mit einem eigenen Datensatz trainiert \cite[\ac{vgl}][]{10.1111/bjd.18880}.
+
 \subsection{Generative Modelle}
-\subsubsection{GANs}
+	Generative Modelle zeichnen sich dadurch aus, Daten zu produzieren/generieren.
+	Dabei wird anhand des Inputs, ein ''passender'' Output generiert.
+	Die Qualität des Outputs hängt von mehreren Faktoren ab.
+	Einige davon sind: % TODO: vervollständigen
+	\begin{description}
+		\item[Datenset:]
+		\item[Verwendete Algorithmen]  
+		\item[] ...
+	\end{description}
+
+\subsubsection{\ac{gan}}
+
 \subsubsection{Diffusion}
+
 \subsection{Historie}
 
 \section{Problemstellung}
 \dots
 
 \section{Evaluation generativer Modelle}
-\dots
+	\begin{figure}[H]
+		\begin{center}
+			\resizebox{\textwidth}{!}{
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				\textbf{Modell} & \textbf{Bildqualität} & \textbf{Vielseitigkeit} & \textbf{Trainingszeit} & \textbf{Anwendungen} \\
+				\hline
+				GAN & Hoch & Vielseitig & Lang & Bildgenerierung \\
+				\hline
+				Pix2Pix & Hoch & Abhängig & Mittel & Bild-zu-Bild-Übersetzung \\
+				\hline
+				CycleGAN & Gut & Hoch & Mittel & Bild-zu-Bild-Übersetzung \\
+				\hline
+				VAE & Mittel & Mittel & Kurz & Bildgenerierung \\
+				\hline
+				SRGAN & Sehr hoch & Abhängig & Lang & Super-Resolution \\
+				\hline
+				Neural Style Transfer & Künstlerisch & Niedrig & Kurz & Stilübertragung \\
+				\hline
+				Diffusion Model & Hoch & Hoch & Lang & Vielseitige Anwendungen \\
+				\hline
+			\end{tabular}}
+			\caption{Evaluationstabelle generativer Modelle}
+			\label{img:evaluationstabellegm}
+		\end{center}
+	\end{figure}
 
 \section{Konzipierung}
 
